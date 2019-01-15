@@ -2,8 +2,6 @@ import { User } from './../entities/user.entity';
 import { Controller, Get, Post, Body } from '@nestjs/common';
 import { UserService } from './user.service';
 import { Observable, of, from } from 'rxjs';
-import { UserDTO } from '../dtos/user.dto';
-import { create } from 'domain';
 
 @Controller('user')
 export class UserController {
@@ -15,7 +13,7 @@ export class UserController {
     return from(users);
   }
 
-  @Post('/create')
+  @Post('create')
   create(@Body() user: User) {
     this._userService.createUser(user);
   }
