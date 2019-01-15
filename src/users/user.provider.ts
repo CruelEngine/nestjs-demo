@@ -3,7 +3,7 @@ import { User } from './entities/user.entity';
 
 export const userProviders = [
   {
-    provide: 'UserProviderToken',
+    provide: 'UserRepositoryToken',
     useFactory: (connection: Connection) => connection.getRepository(User),
     inject: ['DbConnectionToken'],
   },
