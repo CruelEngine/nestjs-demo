@@ -17,4 +17,14 @@ export class UserService {
   async createUser(user: User): Promise<void> {
     this.userRepository.create(user);
   }
+
+  async findUser(id: number): Promise<User> {
+    let user: User = await this.userRepository.findOne(id);
+    console.log(user);
+    return user;
+  }
+
+  async deleteUser(id: number): Promise<void> {
+    await this.userRepository.delete(id);
+  }
 }

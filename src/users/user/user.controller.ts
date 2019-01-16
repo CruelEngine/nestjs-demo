@@ -1,5 +1,5 @@
 import { User } from './../entities/user.entity';
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete } from '@nestjs/common';
 import { UserService } from './user.service';
 import { Observable, of, from } from 'rxjs';
 
@@ -16,5 +16,16 @@ export class UserController {
   @Post('create')
   create(@Body() user: User) {
     this._userService.createUser(user);
+  }
+
+  @Get(':id')
+  findUser(@Param('id') id: number) {
+    console.log(id);
+    return from(this._userService.findUser(id));
+  }
+
+  @Delete(':id')
+  deleteUser(@Param('id') id: number) {
+    return from(this._userService.deleteUser(id));
   }
 }
